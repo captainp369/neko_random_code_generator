@@ -13,6 +13,18 @@
       padding: 30px;
     }
     
+    .column-left {
+      order: 2;
+      width: 50%;
+      padding: 30px;
+    }
+
+    .column-right {
+      order: 1;
+      width: 50%;
+      padding: 30px;
+    }
+
     /* Clear floats after the columns */
     .row:after {
       content: "";
@@ -59,7 +71,7 @@
   <h1><center>Neko Random Code Generator</center></h1>
   <div class="row">
     <div class="column">
-      <form action="/generate-codes" method="POST">
+      <form action="/generate-codes" method="POST" style="float: right;">
         <label for="filename">File Name:</label>
         <input type="text" id="filename" name="filename" placeholder="nkzm_random_code" /><br /><br />
         <label for="codelength">Code Length:</label>
@@ -83,7 +95,8 @@
     </div>
     <div class="column">
       <img src="https://zbpqbnkitmsnvktwr334hkkyd3qblvethkdyf6f6srkhwlvylm3a.arweave.net/yF8AtUibJNqqdo73w6lYHuAV1JM6h4L4vpRUey64WzY" alt="NKZM #5451" style="width:300px;height:300px;">
-      <div>Brought to you by <a href="https://twitter.com/ApeCaptain">ApeCaptain (NKZM #5451)</a></div>
+      <div>Brought to you by <a href="https://twitter.com/ApeCaptain">ApeCaptain (NKZM #5451)</a></div><br />
+      <div>Check out Github Repo >> <a href="https://github.com/captainp369/neko_random_code_generator">Here</a></div>
     </div>
   </div>
 </body>
