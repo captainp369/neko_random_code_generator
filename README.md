@@ -1,6 +1,6 @@
 # neko_random_code_generator
 An open source project using "randomstring" package (https://www.npmjs.com/package/randomstring) to create an easy to use random code generator, so i called it "Neko Random Code Generator" !
-Visit & Use here the website: https://neko-random-code-generator.vercel.app/
+Visit & Use the website here: https://neko-random-code-generator.vercel.app/
 
 ## Neko Random Code Generator
 
