@@ -16,15 +16,29 @@ app.get("/", (req, res) => {
 });
 
 app.post("/generate-codes", (req, res) => {
-  const prefix = req.body.prefix || "Pi";
-  const count = parseInt(req.body.count) || 3000;
+  // Basic options
+  const filename = req.body.filename || "nkzm_random_code";
+  const count = parseInt(req.body.count) || 100;
   const codelength = parseInt(req.body.codelength) || 9;
+  // Advance options
+  const prefix = req.body.prefix || "";
+  const suffix = req.body.suffix || "";
+  const charset = req.body.charset || "";
 
   const _data = [];
   let i = 0;
 
   while (i < count) {
-    const _ran = prefix + randomstring.generate(codelength);
+    if (charset=="") {
+      _ran = prefix + randomstring.generate(codelength) + suffix;
+    }
+    if (charset!=="") {
+      _ran = prefix + randomstring.generate({
+        length: codelength,
+        charset: charset
+      }) + suffix;
+    }
+    
     const _code = { code: _ran };
 
     if (!_data.includes(_code)) {
@@ -42,7 +56,7 @@ app.post("/generate-codes", (req, res) => {
   const excelFile = XLSX.write(workBook, { type: "buffer", bookType: "xlsx" });
 
   // Set appropriate headers for the response
-  res.setHeader("Content-Disposition", "attachment; filename=random_code.xlsx");
+  res.setHeader("Content-Disposition", "attachment; filename="+filename+".xlsx");
   res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 
   // Send the Excel file as a response

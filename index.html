@@ -1,18 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Random Code Generator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 50%;
+      padding: 30px;
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Hide the advanced options by default */
+    .advanced-options {
+      display: none;
+    }
+
+    .fadedButton {
+      background-color: black;
+      border: none;
+      color: white;
+      text-align: center;
+      opacity: 0.6;
+      transition: 0.3s;
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .fadedButton:hover {opacity: 1}
+  </style>
+  <title>Neko Random Code Generator</title>
+  <script>
+    function toggleAdvancedOptions() {
+      var advancedOptions = document.getElementById("advancedOptions");
+      var advancedButton = document.getElementById("advancedButton");
+
+      if (advancedOptions.style.display === "none") {
+        advancedOptions.style.display = "block";
+        advancedButton.textContent = "Hide Advanced Options";
+      } else {
+        advancedOptions.style.display = "none";
+        advancedButton.textContent = "Show Advanced Options";
+      }
+    }
+  </script>
 </head>
 <body>
-  <h1>Random Code Generator</h1>
-  <form action="/generate-codes" method="POST">
-    <label for="prefix">Prefix:</label>
-    <input type="text" id="prefix" name="prefix" placeholder="Pi" /><br /><br />
-    <label for="codelength">CodeLength:</label>
-    <input type="number" id="codelength" name="codelength" placeholder="9" /><br /><br />
-    <label for="count">Count:</label>
-    <input type="number" id="count" name="count" placeholder="3000" /><br /><br />
-    <button type="submit">Generate Codes</button>
-  </form>
+  <h1><center>Neko Random Code Generator</center></h1>
+  <div class="row">
+    <div class="column">
+      <form action="/generate-codes" method="POST">
+        <label for="filename">File Name:</label>
+        <input type="text" id="filename" name="filename" placeholder="nkzm_random_code" /><br /><br />
+        <label for="codelength">Code Length:</label>
+        <input type="number" id="codelength" name="codelength" placeholder="9" /><br /><br />
+        <label for="count">Count:</label>
+        <input type="number" id="count" name="count" placeholder="100" /><br /><br />
+        
+        <button type="button" id="advancedButton" class="fadedButton" onclick="toggleAdvancedOptions()">Show Advanced Options</button><br /><br />
+
+        <div id="advancedOptions" class="advanced-options">
+          <label for="prefix">Prefix:</label>
+          <input type="text" id="prefix" name="prefix" placeholder="e.g. NKZM" /><br /><br />
+          <label for="suffix">Suffix:</label>
+          <input type="text" id="suffix" name="suffix" placeholder="e.g. THNDR" /><br /><br />
+          <label for="charset">Charset:</label>
+          <input type="text" id="charset" name="charset" placeholder="e.g. abc" /><br /><br />
+        </div>
+
+        <button type="submit">Generate Codes</button>
+      </form>
+    </div>
+    <div class="column">
+      <img src="https://zbpqbnkitmsnvktwr334hkkyd3qblvethkdyf6f6srkhwlvylm3a.arweave.net/yF8AtUibJNqqdo73w6lYHuAV1JM6h4L4vpRUey64WzY" alt="NKZM #5451" style="width:300px;height:300px;">
+      <div>Brought to you by <a href="https://twitter.com/ApeCaptain">ApeCaptain (NKZM #5451)</a></div>
+    </div>
+  </div>
 </body>
 </html>
